@@ -1,9 +1,82 @@
 <!DOCTYPE html>
-<html>
-  <head><title>Filipe Teixeira</title></head>
-  <body>
-    
-    <h1>Hello World</h1>
-    
-  </body>
+<html lang="pt-br">
+
+<head>
+
+  <title>Filipe Teixeira: Full Stack Developer em Santiago/RS</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="title" content="Filipe Teixeira: Full Stack Developer em Santiago/RS">
+  <meta name="description"
+    content="Meu nome é Filipe Teixeira e sou Full Stack Developer situado na cidade de Santiago/RS. Veja meu portfolio e entre em contato.">
+  <meta name="keywords"
+    content="cubo mágico, cubo, speedcube, speedcubing, portfolio, developer, full stack developer, front-end, back-end, css, html, js, javascript, php, mysql, python, desenvolvedor, desenvolvimento, sistemas, desenvolvimento de sistemas">
+  <meta name="robots" content="index, follow">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="language" content="Portuguese">
+  <meta name="author" content="Filipe Teixeira">
+
+  <script src="js/app.js"></script>
+  <script src="https://api.github.com/users/shuantsu/repos?callback=callback"></script>
+
+  <link rel="stylesheet" href="css/style.css" />
+
+</head>
+
+
+<body>
+
+  <header>
+
+    <div class="wrapper">
+
+      <div class="imagem">
+        <img src="img/eu.jpg" alt="Filipe Teixeira" />
+      </div>
+      <div class="texto">
+
+        <h1>Filipe Teixeira</h1>
+        <h4>Full Stack Developer</h4>
+
+        <p>Seja bem-vindo à minha página. Sou Full Stack Developer na cidade de Santiago/RS. Nesta página você poderá
+          ver meu <a href="#portfolio">portfolio</a>
+          <!--, assuntos relacionados ao <a href="#speedcubing">cubo mágico</a>--> e acessar meu <a
+            href="/blog">blog</a> com assuntos relativos a programação.<br><br> Ficarei feliz em responder o mais rápido
+          possível se você entrar em <a href="#contato">contato</a> para solicitar algum serviço.</p>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <div id="portfolio">
+
+    <h2 class="portfolio_title">Portfolio</h2>
+
+    <div class="colunas" id="portfolio_wrapper">
+    </div>
+
+  </div>
+
+  <div id="contato">
+    <div class="wrapper">
+      Entre em contato:<br><br>
+      E-mail: <a id="mail"></a>
+      <br>
+      Whatsapp: <a href="https://bit.ly/2Y16CkG">Me mande uma mensagem!</a>
+    </div>
+  </div>
+
+  <script>
+    const mail_el = document.getElementById('mail');
+    const the_mail = 'filipe' + '@' + 'filipeteixeira' + '.com.br';
+    mail.setAttribute('href', 'mailto:' + the_mail);
+    mail.innerHTML = the_mail;
+  </script>
+
+</body>
+
 </html>
