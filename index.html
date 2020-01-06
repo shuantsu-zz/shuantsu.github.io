@@ -46,34 +46,47 @@
 
   </header>
 
-
   <div id="portfolio">
+	<div class="wrapper">
+		<h2 class="portfolio_title">Portfolio</h2>
 
-    <h2 class="portfolio_title">Portfolio</h2>
-
-    <div class="colunas" id="portfolio_wrapper">
-    </div>
+		<div class="colunas" id="portfolio_wrapper">
+		</div>
+	</div>
 
   </div>
 
-  <div id="contato">
-    <div class="wrapper">
-      Entre em contato:<br><br>
-      E-mail: <a id="mail"></a>
-      <br>
-      Whatsapp: <a href="https://bit.ly/2Y16CkG">Me mande uma mensagem!</a>
-    </div>
-  </div>
+  <footer>
+	<div class="wrapper">
+		<div class="flex-container">
+			<div class="contato">
+				Entre em contato:<br><br>
+				E-mail: <a id="mail"></a>
+				<br>
+				Whatsapp: <a href="https://bit.ly/2Y16CkG">Me mande uma mensagem!</a>
+			</div>
+			<div class="social-icons">
+			
+				<a class="social-icon" target="_blank" href="https://www.codewars.com/users/shuantsu/completed_solutions"><i class="icon codewars"></i><p>Codewars</p></a>
+				<a class="social-icon" target="_blank" href="https://codepen.io/filipemtx/"><i class="icon codepen"></i><p>Codepen</p></a>
+				<a class="social-icon" target="_blank" href="https://www.youtube.com/filipemtx"><i class="icon youtube"></i><p>Youtube</p></a>
+			
+			</div>
+		</div>
+	</div>
+  </footer>
 
-  <script>
-    const mail_el = document.getElementById('mail');
-    const the_mail = 'shuantsu' + '@' + 'gmail' + '.com.br';
-    mail.setAttribute('href', 'mailto:' + the_mail);
-    mail.innerHTML = the_mail;
-  </script>
 
 <script src="js/app.js"></script>
 <script src="https://api.github.com/users/shuantsu/repos?callback=callback"></script>
+<script>
+window.onload = function() {
+    const mail_el = document.getElementById('mail');
+    const the_mail = 'shuantsu' + '@' + 'gmail' + '.com.br';
+    mail.setAttribute('href', 'mailto:' + the_mail);
+	mail.innerHTML = the_mail;
+}
+</script>
 
 </body>
 

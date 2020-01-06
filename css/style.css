@@ -5,6 +5,10 @@
 	box-sizing: border-box;
 }
 
+html, body {
+	height: 100%;
+}
+
 header {
 	overflow: auto;
 	background: black;
@@ -12,7 +16,7 @@ header {
 	padding: 20px;
 }
 
-header .wrapper, #portfolio, #contato .wrapper {
+.wrapper {
 	margin: 0 auto;
 	max-width:1600px;
 }
@@ -22,12 +26,13 @@ header {
 	flex-direction: row;
 }
 
-#contato a, #contato a:visited, #contato a:hover, #contato a:active, header a, header a:visited, header a:hover, header a:active {
+a, a:visited, a:hover, a:active {
 	color: #08f;
 }
 
 #portfolio {
 	padding-top: 30px;
+	background: #191D21;
 }
 
 .portfolio_title {
@@ -80,7 +85,7 @@ a.bloco, a:visited.bloco, a:hover.bloco, a:active.bloco {
 
 body{
 	font-family: sans-serif;
-	background: #191D21;
+	background: black;
 	font-weight: 300;
 	font-size: 14px;
 
@@ -171,9 +176,63 @@ margin-bottom: 10px;
 	}
 }
 
-#contato {
-	padding: 25px;
+footer {
 	background: black;
 	color: white;
 	font-size: 14pt;
+	padding: 50px;
+}
+footer .flex-container {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+.social-icons {
+	display: flex;
+	flex-direction: row;
+}
+.social-icon {
+	margin-left: 20px;
+}
+.social-icon p {
+	text-align: center;
+	padding: 10px;
+}
+.icon {
+	margin: 0 auto;
+	width: 100px;
+	height: 100px;
+	display: block;
+	background-size: 100%;
+}
+.codepen {
+	background-image: url(../img/codepen.png);
+}
+.codewars {
+	background-image: url(../img/codewars.png);
+}
+.youtube {
+	background-image: url(../img/youtube.png);
+}
+
+@media screen and (max-width:800px){
+	footer .flex-container {
+		flex-direction: column;
+	}
+	.contato {
+		margin-bottom: 30px;
+	}
+}
+
+@media screen and (max-width:493px){
+	.social-icons {
+		flex-direction: column!important;
+	}
+	.social-icon {
+		margin-top: 20px;
+	}
+	.icon {
+		width: 140px;
+		height: 140px
+	}
 }
