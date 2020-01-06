@@ -1,18 +1,21 @@
 function callback(json) {
     json.data.forEach(item => {
+		if (item['name'] == 'shuantsu.github.io') return;
         const a = document.createElement('a');
+        const img = document.createElement('img');
         const div = document.createElement('div');
         const descricao = document.createElement('p');
-        const title = document.createElement('h4');
+        const title = document.createElement('h1');
 
+		img.setAttribute('src', item['html_url'] + '/blob/master/thumb.png?raw=true');
         a.setAttribute('class', 'bloco');
         a.setAttribute('href', item['html_url']);
         title.innerHTML = item['name'].replace(/_/g, ' ').toLowerCase().replace(/^\w/, c => c.toUpperCase());
         descricao.innerHTML = item['description'];
         a.appendChild(div);
 
-        //div.appendChild(img);
         div.appendChild(title);
+		div.appendChild(img);
         div.appendChild(descricao);
 
         document.getElementById('portfolio_wrapper').appendChild(a);

@@ -43,7 +43,6 @@ header .wrapper {
 header img {
 	border-radius: 15px;
 	width: 100%;
-	max-width: 600px;
 	display: inline-block;
 }
 
@@ -92,6 +91,12 @@ body{
 	column-gap: 20px;
 	margin: 0 auto;
 	padding: 15px;
+}
+
+.bloco h1 {
+	font-size: 16pt;
+	margin-bottom: 10px;
+	text-align: center;
 }
 
 .bloco a, .bloco a:visited, .bloco a:hover, .bloco a:active {
