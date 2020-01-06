@@ -1,5 +1,4 @@
 function callback(json) {
-    console.table(json);
     json.data.forEach(item => {
         const a = document.createElement('a');
         const div = document.createElement('div');
@@ -8,11 +7,11 @@ function callback(json) {
 
         a.setAttribute('class', 'bloco');
         a.setAttribute('href', item['html_url']);
-        title.innerHTML = item['name'];
+        title.innerHTML = item['name'].replace(/_/g, ' ').toLowerCase().replace(/^\w/, c => c.toUpperCase());
         descricao.innerHTML = item['description'];
         a.appendChild(div);
 
-        div.appendChild(img);
+        //div.appendChild(img);
         div.appendChild(title);
         div.appendChild(descricao);
 
