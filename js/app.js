@@ -7,13 +7,16 @@ function callback(json) {
         const descricao = document.createElement('p');
         const title = document.createElement('h1');
 
+        a.setAttribute('href', item['homepage']);
+        a.setAttribute('target', 'filipeteixeira');
         img.setAttribute('src', item['html_url'] + '/blob/master/thumb.png?raw=true');
         title.innerHTML = item['name'].replace(/_/g, ' ').toLowerCase().replace(/^\w/, c => c.toUpperCase());
         descricao.innerHTML = item['description'];
 
         div.appendChild(title);
         div.setAttribute('class', 'bloco');
-        div.appendChild(img);
+        div.appendChild(a);
+        a.appendChild(img)
         div.appendChild(descricao);
         
         div.innerHTML += `
