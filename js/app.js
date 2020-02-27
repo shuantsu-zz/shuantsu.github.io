@@ -7,18 +7,23 @@ function callback(json) {
         const descricao = document.createElement('p');
         const title = document.createElement('h1');
 
-	img.setAttribute('src', item['html_url'] + '/blob/master/thumb.png?raw=true');
-        a.setAttribute('class', 'bloco');
-        a.setAttribute('href', item['html_url']);
+        img.setAttribute('src', item['html_url'] + '/blob/master/thumb.png?raw=true');
         title.innerHTML = item['name'].replace(/_/g, ' ').toLowerCase().replace(/^\w/, c => c.toUpperCase());
         descricao.innerHTML = item['description'];
-        a.appendChild(div);
 
         div.appendChild(title);
-	div.appendChild(img);
+        div.setAttribute('class', 'bloco');
+        div.appendChild(img);
         div.appendChild(descricao);
+        
+        div.innerHTML += `
+        <div class="call-to-action">
+        <button class="call-to-action__acessar" onclick="window.open('${item['homepage']}', 'filipeteixeira')">Acessar</button>
+        <button class="call-to-action__codigo" onclick="window.open('${item['html_url']}', 'filipeteixeira')">Ver código</button>
+        </div>
+        `
 
-        document.getElementById('portfolio_wrapper').appendChild(a);
+        document.getElementById('portfolio_wrapper').appendChild(div);
     });
 
     scrollTo();

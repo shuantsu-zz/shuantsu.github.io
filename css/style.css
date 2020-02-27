@@ -236,3 +236,23 @@ footer .flex-container {
 		height: 140px
 	}
 }
+
+.call-to-action {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+.call-to-action > button {
+    margin-left: 10px;
+    padding: 10px;
+    border: 0;
+    border-radius: 5px; 
+    color: white;
+    cursor: pointer;
+}
+.call-to-action__codigo {
+    background: #00b386;
+}
+.call-to-action__acessar {
+    background: #00238c;
+}
