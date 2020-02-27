@@ -18,8 +18,8 @@ function callback(json) {
         
         div.innerHTML += `
         <div class="call-to-action">
-        <button class="call-to-action__acessar" onclick="window.open('${item['homepage']}', 'filipeteixeira')">Acessar</button>
-        <button class="call-to-action__codigo" onclick="window.open('${item['html_url']}', 'filipeteixeira')">Ver código</button>
+        <button class="call-to-action__acessar" onclick="window.open('${item['homepage']}', 'filipeteixeira')">Acessar página</button>
+        <button class="call-to-action__codigo" onclick="window.open('${item['html_url']}', 'filipeteixeira')">Acessar repositório</button>
         </div>
         `
 
