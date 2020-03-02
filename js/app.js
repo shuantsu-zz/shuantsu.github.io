@@ -1,9 +1,77 @@
+const allTags = [];
+
+function getTags(item) {
+    const description = item['description']
+    if (description.indexOf('|') > -1) {
+        return description.split("|")[1].split(',');
+    }
+    return [];
+}
+
+const does = (container) => ({
+    "contain": (what) => {
+        return container.indexOf(what) > -1;
+    },
+});
+
+const doesnt = (container) => ({
+    "contain": (what) => {
+        return container.indexOf(what) < 0;
+    },
+});
+
+function generateTagsNav(tags) {
+    let output = `<button onclick="filter('todos');" class="tags-filter__filter-btn">Mostrar todos</button> `;
+    
+    tags.forEach((tag) => {
+        output += `<button onclick="filter('${tag}');" class="tags-filter__filter-btn">#${tag}</button> `;
+    });
+    
+    const div = document.createElement('div');
+    
+    div.innerHTML = output;
+    
+    document.querySelector(".tags-filter").appendChild(div);
+    
+}
+
+function filter(tag) {
+    document.querySelectorAll('.bloco').forEach((el)=>{
+        const tagList = el.getAttribute('data-tags');
+        const tags = tagList ? tagList.split(',') : null;
+        
+        if (!tags) {
+            return;
+        }
+        
+        if ( does(tags).contain(tag) || tag == "todos") {
+            el.style.display = 'inline-block';
+        } else {
+            el.style.display = 'none';
+        }
+        console.log( does(tags).contain('todos') );
+    });
+}
+
 function callback(json) {
+
     json.data.forEach(item => {
-	if (item['name'] == 'shuantsu.github.io') return;
+        
+        const tags = getTags(item);
+
+        if ( does(tags).contain('hidden') ) {
+            return;
+        }
+        
+        tags.forEach((tag)=>{
+            if ( doesnt(allTags).contain(tag) ) {
+                allTags.push(tag);
+            }
+        });
+
         const a = document.createElement('a');
         const img = document.createElement('img');
-        const div = document.createElement('div');
+        const div = document.createElement('div');        
         const descricao = document.createElement('p');
         const title = document.createElement('h1');
 
@@ -11,10 +79,17 @@ function callback(json) {
         a.setAttribute('target', 'filipeteixeira');
         img.setAttribute('src', item['html_url'] + '/blob/master/thumb.png?raw=true');
         title.innerHTML = item['name'].replace(/_/g, ' ').toLowerCase().replace(/^\w/, c => c.toUpperCase());
-        descricao.innerHTML = item['description'];
+        
+        let descricaoContent = item['description'];
+        if ( does(descricaoContent).contain('|') ) {
+            descricaoContent = descricaoContent.split('|')[0];
+        }
+        
+        descricao.innerHTML = descricaoContent;
 
         div.appendChild(title);
         div.setAttribute('class', 'bloco');
+        div.setAttribute('data-tags', tags.join(','));
         div.appendChild(a);
         a.appendChild(img)
         div.appendChild(descricao);
@@ -28,36 +103,7 @@ function callback(json) {
 
         document.getElementById('portfolio_wrapper').appendChild(div);
     });
-
-    scrollTo();
-}
-
-function scrollAnchors(e, respond = null) {
-    const distanceToTop = el => Math.floor(el.getBoundingClientRect().top);
-    e.preventDefault();
-    var targetID = (respond) ? respond.getAttribute('href') : this.getAttribute('href');
-    const targetAnchor = document.querySelector(targetID);
-    if (!targetAnchor) return;
-    const originalTop = distanceToTop(targetAnchor);
-    window.scrollBy({ top: originalTop, left: 0, behavior: 'smooth' });
-    const checkIfDone = setInterval(function () {
-        const atBottom = window.innerHeight + window.pageYOffset >= document.body.offsetHeight - 2;
-        if (distanceToTop(targetAnchor) === 0 || atBottom) {
-            targetAnchor.tabIndex = '-1';
-            targetAnchor.focus();
-            window.history.pushState('', '', targetID);
-            clearInterval(checkIfDone);
-        }
-    }, 100);
-
-}
-
-function scrollTo() {
-    var links = document.getElementsByTagName('a');
-    for (var i = 0; i < links.length; i++) {
-        var link = links[i];
-        if ((link.href && link.href.indexOf('#') != -1) && ((link.pathname == location.pathname) || ('/' + link.pathname == location.pathname)) && (link.search == location.search)) {
-            link.onclick = scrollAnchors;
-        }
-    }
+ 
+    generateTagsNav(allTags);
+ 
 }
