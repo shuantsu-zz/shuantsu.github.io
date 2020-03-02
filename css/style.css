@@ -249,13 +249,17 @@ footer .flex-container {
     justify-content: flex-end;
     margin-top: 10px;
 }
+
+button {
+    cursor: pointer;
+}
+
 .call-to-action > button {
     margin-left: 10px;
     padding: 10px;
     border: 0;
     border-radius: 5px; 
     color: white;
-    cursor: pointer;
 }
 .call-to-action__codigo {
     background: #00b386;
@@ -276,7 +280,6 @@ footer .flex-container {
     color: white;
     opacity: .7;
     transition: .5s opacity;
-    cursor: pointer;
 }
 .tags-filter__filter-btn:hover {
     opacity: 1;
