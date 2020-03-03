@@ -34,12 +34,11 @@
       
       <div class="texto">
 
-        <h1>Filipe Teixeira</h1>
-        <h4>Full Stack Developer</h4>
+        <h1>Filipe Teixeira: Full Stack Developer</h1>
 
-        <p>Seja bem-vindo ao meu <a href="#portfolio">portfolio</a>. Minhas competências são: html, css, scss, javascript, jquery, php, mysql, python, flask, pyqt, git.</p>
+        <p>Seja bem-vindo ao meu portfolio. Sou desenvolvedor e webdesigner, minhas principais competências são python, javascript e php. Veja aqui meus trabalhos e artigos publicados.</p>
 		  
-		  <p>Vou responder o mais rápido possível se você entrar em <a href="#contato">contato</a> para solicitar algum serviço.</p>
+        <p>Vou responder o mais rápido possível se você entrar em <a href="#contato">contato</a> para solicitar algum serviço.</p>
 
       </div>
 
@@ -71,7 +70,7 @@
           
         </div>
         
-        <button class="destaque__btn" onclick="window.open('http://cinel.net.br', '_blank')">Acessar</button>
+        <button class="destaque__btn" onclick="window.open('http://cinel.net.br', 'filipeteixeira')">Acessar</button>
         
       </div>
         
@@ -90,6 +89,48 @@
 		</div>
 	</div>
 
+  <div class="artigos">
+    
+    <div class="wrapper">
+      
+      <div class="artigos-outros">
+      
+          <h1>
+          Artigos publicados:
+          </h1>
+          
+          <div class="artigos-outros__description">
+            <h3>"Formulário de e-mail e envio com PHP"</h3>
+            
+            <img src="img/tableless.svg" width="400">
+            <p>
+            
+            O Tableless é dos mais renomados sites sobre desenvolvimento para web do Brasil. Veja um artigo que escrevi para o site, mostrando <strong>como implementar a parte de contato de um website usando PHP</strong>.
+            <a href="https://tableless.com.br/formulario-de-e-mail-e-envio-com-php/" class="btn" target="filipeteixeira">Ver o post</a>
+            </p>
+          </div>
+        
+        </div>
+      
+        <div class="artigos-blog">
+        
+            <h1>
+            Últimas novidades no meu blog
+            </h1>
+            
+            <div class="blog-feed">
+            </div>
+            
+            <a href="http://www.filipeteixeira.com.br/blog" class="btn">Ver tudo</a>
+            
+        </div>
+        
+      </div>  
+      
+    </div>
+    
+  </div>
+
   </div>
 
   <footer id="contato">
@@ -103,9 +144,9 @@
 			</div>
 			<div class="social-icons">
 			
-				<a class="social-icon" target="_blank" href="https://www.codewars.com/users/shuantsu/completed_solutions"><i class="icon codewars"></i><p>Codewars</p></a>
-				<a class="social-icon" target="_blank" href="https://codepen.io/filipemtx/pens/public"><i class="icon codepen"></i><p>Codepen</p></a>
-				<a class="social-icon" target="_blank" href="https://www.youtube.com/filipemtx"><i class="icon youtube"></i><p>Youtube</p></a>
+				<a class="social-icon" target="filipeteixeira" href="https://www.codewars.com/users/shuantsu/completed_solutions"><i class="icon codewars"></i><p>Codewars</p></a>
+				<a class="social-icon" target="filipeteixeira" href="https://codepen.io/filipemtx/pens/public"><i class="icon codepen"></i><p>Codepen</p></a>
+				<a class="social-icon" target="filipeteixeira" href="https://www.youtube.com/filipemtx"><i class="icon youtube"></i><p>Youtube</p></a>
 			
 			</div>
 		</div>
@@ -122,6 +163,42 @@ window.onload = function() {
     mail.setAttribute('href', 'mailto:' + the_mail);
 	mail.innerHTML = the_mail;
 }
+</script>
+
+<script>
+
+fetch('http://filipeteixeira.com.br/blog/wp-json/wp/v2/posts?per_page=5&_embed')
+  .then(response => response.json())
+  .then(json => process(json));
+
+function process(json) {
+
+  const blog_posts = [];
+
+  for (item of json) {
+    const { id, date, link } = item;
+    const img_url = item['_embedded']
+    ['wp:featuredmedia'][0]
+    ['media_details']
+    ['sizes']
+    ['medium']
+    ['source_url'];
+    
+    blog_posts.push(
+      `
+      <a target="filipeteixeira" href="${link}">
+        <div class="blog-post">
+          <div id="blog-post__image"><img src="${img_url}"></div>
+        </div>
+      </a>
+      `
+    );
+    
+  }
+  document.querySelector('.blog-feed').innerHTML = blog_posts.join("");
+  
+}  
+
 </script>
 
 </body>
