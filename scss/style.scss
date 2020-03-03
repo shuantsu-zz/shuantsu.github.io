@@ -386,6 +386,11 @@ $artigos-blue: #0059b3;
     padding: 50px;
     font-size: 16pt;
 
+    img {
+        margin-right: 20px;
+        margin-bottom: 20px;
+    }
+
     h1 {
         font-size: 26pt;
         text-align: center;
@@ -435,4 +440,33 @@ $artigos-blue: #0059b3;
             border-radius: 15px;
         }
     }
+}
+
+.artigos-blog {
+    h2 {
+        margin-bottom: 20px;
+    }
+    ul {
+        margin-left: 40px;
+    }
+    p {
+        margin-top: 20px;
+        color: #888;
+    }
+}
+
+.imagem-destaque {
+    float: left;
+    max-width: 50%;
+}
+
+@media screen and (max-width:914px){
+    .imagem-destaque {
+        max-width: 100%;
+    }
+}
+
+.clear {
+    clear: both;
+    margin-bottom: 30px;
 }
