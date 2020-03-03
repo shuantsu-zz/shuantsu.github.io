@@ -166,7 +166,7 @@ window.onload = function() {
 
 <script>
 
-fetch('http://filipeteixeira.com.br/blog/wp-json/wp/v2/posts?per_page=5&_embed')
+fetch('https://filipeteixeira.com.br/blog/wp-json/wp/v2/posts?per_page=5&_embed')
   .then(response => response.json())
   .then(json => process(json));
 
