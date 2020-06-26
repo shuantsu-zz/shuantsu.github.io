@@ -94,9 +94,11 @@ function callback(json) {
         a.appendChild(img)
         div.appendChild(descricao);
         
+        const cta = item['homepage'] ? `<button class="call-to-action__acessar" onclick="window.open('${item['homepage']}', 'filipeteixeira')">Acessar página</button>` : '';
+        
         div.innerHTML += `
         <div class="call-to-action">
-        <button class="call-to-action__acessar" onclick="window.open('${item['homepage']}', 'filipeteixeira')">Acessar página</button>
+        ${cta}
         <button class="call-to-action__codigo" onclick="window.open('${item['html_url']}', 'filipeteixeira')">Acessar repositório</button>
         </div>
         `
