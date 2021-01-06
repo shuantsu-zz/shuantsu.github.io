@@ -189,6 +189,7 @@
   </footer>
 
 <script src="js/app.js"></script>
+<!-- <script src="dummy.js"></script> -->
 <script src="https://api.github.com/users/shuantsu/repos?callback=callback"></script>
 <script>
 window.onload = function() {
@@ -201,7 +202,6 @@ window.onload = function() {
 
 
 <script>
-
 fetch('https://filipeteixeira.com.br/blog/wp-json/wp/v2/posts?per_page=5&_embed')
   .then(response => response.json())
   .then(json => process(json));

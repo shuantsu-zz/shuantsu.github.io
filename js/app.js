@@ -74,8 +74,13 @@ function callback(json) {
         const div = document.createElement('div');        
         const descricao = document.createElement('p');
         const title = document.createElement('h1');
+        const homepage = item['homepage'];
 
-        a.setAttribute('href', item['homepage']);
+        if (homepage == null) {
+          a.setAttribute('href', item['homepage']);
+        } else {
+          a.setAttribute('href', item['svn_url']);
+        }
         a.setAttribute('target', 'filipeteixeira');
         img.setAttribute('src', item['html_url'] + '/blob/master/thumb.png?raw=true');
         title.innerHTML = item['name'].replace(/_/g, ' ').toLowerCase().replace(/^\w/, c => c.toUpperCase());
