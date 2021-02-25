@@ -75,9 +75,10 @@ function callback(json) {
         const descricao = document.createElement('p');
         const title = document.createElement('h1');
         const homepage = item['homepage'];
+        console.log(homepage);
 
-        if (homepage == null) {
-          a.setAttribute('href', item['homepage']);
+        if (homepage === null) {
+          a.setAttribute('href', homepage);
         } else {
           a.setAttribute('href', item['svn_url']);
         }
@@ -99,12 +100,12 @@ function callback(json) {
         a.appendChild(img)
         div.appendChild(descricao);
         
-        const cta = item['homepage'] ? `<button class="call-to-action__acessar" onclick="window.open('${item['homepage']}', 'filipeteixeira')">Acessar página</button>` : '';
+        const cta = item['homepage'] ? `<button class="call-to-action__acessar" onclick="window.open('${item['homepage']}', '_blank')">Acessar página</button>` : '';
         
         div.innerHTML += `
         <div class="call-to-action">
         ${cta}
-        <button class="call-to-action__codigo" onclick="window.open('${item['html_url']}', 'filipeteixeira')">Acessar repositório</button>
+        <button class="call-to-action__codigo" onclick="window.open('${item['html_url']}', '_blank')">Acessar repositório</button>
         </div>
         `
 
