@@ -78,9 +78,9 @@ function callback(json) {
         console.log(homepage);
 
         if (homepage === null) {
-          a.setAttribute('href', homepage);
-        } else {
           a.setAttribute('href', item['svn_url']);
+        } else {
+          a.setAttribute('href', homepage);
         }
         a.setAttribute('target', 'filipeteixeira');
         img.setAttribute('src', item['html_url'] + '/blob/master/thumb.png?raw=true');
