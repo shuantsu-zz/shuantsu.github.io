@@ -69,20 +69,12 @@ function callback(json) {
             }
         });
 
-        const a = document.createElement('a');
         const img = document.createElement('img');
         const div = document.createElement('div');        
         const descricao = document.createElement('p');
         const title = document.createElement('h1');
         const homepage = item['homepage'];
-        console.log(homepage);
 
-        if (homepage === null) {
-          a.setAttribute('href', item['svn_url']);
-        } else {
-          a.setAttribute('href', homepage);
-        }
-        a.setAttribute('target', 'filipeteixeira');
         img.setAttribute('src', item['html_url'] + '/blob/master/thumb.png?raw=true');
         title.innerHTML = item['name'].replace(/_/g, ' ').toLowerCase().replace(/^\w/, c => c.toUpperCase());
         
@@ -96,8 +88,7 @@ function callback(json) {
         div.appendChild(title);
         div.setAttribute('class', 'bloco');
         div.setAttribute('data-tags', tags.join(','));
-        div.appendChild(a);
-        a.appendChild(img)
+        div.appendChild(img);
         div.appendChild(descricao);
         
         const cta = item['homepage'] ? `<button class="call-to-action__acessar" onclick="window.open('${item['homepage']}', '_blank')">Acessar página</button>` : '';
